@@ -1,5 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
 public class Test {
-    //This commit is super duper helpful.
+    //This commit is incredibly helpful.
 }
