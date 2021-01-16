@@ -7,7 +7,7 @@
  */
 
 //import all the necessary packages (if you have auto-import on you don't have to worry about typing these things in)
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Resources;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;

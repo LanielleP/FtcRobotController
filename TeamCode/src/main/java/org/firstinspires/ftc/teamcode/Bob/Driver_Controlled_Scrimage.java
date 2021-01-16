@@ -5,7 +5,7 @@
  * @Last: 11/XX/20
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Bob;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -16,9 +16,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
 @SuppressWarnings({"unused"})
-
-
-public class Driver_Controlled extends OpMode {
+public class Driver_Controlled_Scrimage extends OpMode {
 
     private DcMotor driveRF;//drive wheel located RIGHT FRONT
     private DcMotor driveRB;//drive wheel located RIGHT BACK
@@ -29,8 +27,9 @@ public class Driver_Controlled extends OpMode {
     private DcMotor backTreads;
     private Servo bandHolder;
     private CRServo extendContinuous;
-    private Servo rotateArm;
+    private CRServo rotateArm;
     private Servo clampArm;
+
     @Override
     public void init()
     {
@@ -44,7 +43,7 @@ public class Driver_Controlled extends OpMode {
         backTreads = hardwareMap.get(DcMotor.class, "backTreads");
         bandHolder = hardwareMap.get(Servo.class, "bandHolder");
         extendContinuous = hardwareMap.get(CRServo.class, "extendContinuous");
-        rotateArm = hardwareMap.get(Servo.class, "rotateArm");
+        rotateArm = hardwareMap.get(CRServo.class, "rotateArm");
         clampArm = hardwareMap.get(Servo.class, "clampArm");
 
         //clockwise
@@ -73,16 +72,19 @@ public class Driver_Controlled extends OpMode {
 
     public void loop()
     {
-        double xPow,yPow,rxPow,sSpeed, p2x, p2y;
+        double xPow,yPow,rxPow,sSpeed, p2x1, p2y1, p2y2, p2x2;
 
         xPow = -gamepad1.left_stick_x;
         yPow = -gamepad1.left_stick_y;
         rxPow = gamepad1.right_stick_x;
 
-        p2x = gamepad2.left_stick_x;
-        p2y = gamepad2.left_stick_y;
+        p2x1 = gamepad2.left_stick_x;
+        p2y1 = gamepad2.left_stick_y;
 
-        //Conveyor belt On/Off
+        p2x2 = gamepad2.right_stick_x;
+        p2y2 = gamepad2.right_stick_y;
+
+        //-----------------Conveyor belt On/Off-----------------
         if (gamepad1.right_bumper){
             mainTreads.setPower(1);
             backTreads.setPower(-1);
@@ -96,7 +98,7 @@ public class Driver_Controlled extends OpMode {
             backTreads.setPower(0);
         }
 
-        //Shooter
+        //-----------------Shooter-----------------
         if (!gamepad1.left_bumper){
             sSpeed = 0;
             Shooter.setPower(sSpeed);
@@ -104,54 +106,46 @@ public class Driver_Controlled extends OpMode {
         if (gamepad1.left_bumper){
             sSpeed = 0;
             if (gamepad1.a){
-                sSpeed = 0.21;
+                sSpeed = 0.4;
             }
             if (gamepad1.b){
-                sSpeed = 0.23;
+                sSpeed = 0.45;
             }
             if (gamepad1.x){
-                sSpeed = 0.19;
+                sSpeed = 0.3;
             }
             if (gamepad1.y){
-                sSpeed = 0.15;
+                sSpeed = 0.19;
             }
             Shooter.setPower(sSpeed);
         }
-        //Band Holder
+        //-----------------Band Holder-----------------
         if (gamepad2.a && !gamepad2.left_bumper && !gamepad2.right_bumper){
             bandHolder.setPosition(0.4);
         }
         if (gamepad2.b && !gamepad2.left_bumper && !gamepad2.right_bumper){
             bandHolder.setPosition(-0.3);
         }
-        //Wobble Goal Arm
+        //-----------------Wobble Goal Arm-----------------
 
-        //Extend/Retract
-        if (gamepad2.left_bumper) {
-            extendContinuous.setPower(-p2y);
+        //Extend/Retract and rotating 
+
+        extendContinuous.setPower(-p2y1);
+        rotateArm.setPower(p2y2);
+        //Clamp 
+        if (gamepad2.x){
+            clampArm.setPosition(0.4);
         }
-        //Rotate
-        if(gamepad2.right_bumper) {
-            if (gamepad2.a) {
-                rotateArm.setPosition(0);
-            }
-            if (gamepad2.b) {
-                rotateArm.setPosition(1);
-            }
-            //if (gamepad2.x){
-            //  clampArm.setPosition(0.75);
-            //}
-            //if (gamepad2.y){
-            //  clampArm.setPosition(0);
-            //}
+        if (gamepad2.y) {
+            clampArm.setPosition(0);
         }
 
 
-
-        driveRF.setPower(yPow - xPow - rxPow);
-        driveRB.setPower(yPow + xPow - rxPow);
-        driveLF.setPower(yPow + xPow + rxPow);
-        driveLB.setPower(yPow - xPow + rxPow);
+        //-----------------Wheels-----------------
+        driveRF.setPower(yPow + xPow - rxPow);
+        driveRB.setPower(yPow - xPow - rxPow);
+        driveLF.setPower(yPow - xPow + rxPow);
+        driveLB.setPower(yPow + xPow + rxPow);
 
         telemetry.addData("Status", "Running");
         telemetry.addData("ENCDR-RF", driveRF.getCurrentPosition());
