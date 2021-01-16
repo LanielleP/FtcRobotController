@@ -80,9 +80,9 @@ public class FancyShirley extends OpMode
         if(ang<-180)ang+=360;//angle must be>=-180
         if(ang>180)ang-=360;//angle must be<=180
 
-        if(xPow>=0 && yPow<0)ang+=90;//move angle to second quadrant
-        else if(xPow<0 && yPow<0)ang+=180;//move angle to third quadrant
-        else if(xPow<0 && yPow<=0 )ang+=270;//move angle to fourth quadrant
+        if(xPow>=0 && yPow<0)ang+=90;//Move.java angle to second quadrant
+        else if(xPow<0 && yPow<0)ang+=180;//Move.java angle to third quadrant
+        else if(xPow<0 && yPow<=0 )ang+=270;//Move.java angle to fourth quadrant
         ang = ang - orientation;//likely to be an issue
 
         if(ang<-180)ang+=360;//angle must be>=-180
@@ -123,7 +123,7 @@ public class FancyShirley extends OpMode
         telemetry.update();
         sleep(1000);// Wait one second to ensure the IMU is ready.
         while (!IMU_Calibrated()) {// Loop until IMU has been calibrated.
-            telemetry.addData("If calibration ", "doesn't complete after 3 seconds, move through 90 degree pitch, roll and yaw motions until calibration complete ");
+            telemetry.addData("If calibration ", "doesn't complete after 3 seconds, Move.java through 90 degree pitch, roll and yaw motions until calibration complete ");
             telemetry.update();
             sleep(1000);// Wait one second before checking calibration status again.
         }//ends while loop
