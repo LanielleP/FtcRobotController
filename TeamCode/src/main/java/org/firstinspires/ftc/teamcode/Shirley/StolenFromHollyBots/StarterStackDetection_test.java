@@ -21,12 +21,10 @@
  * FTC TEAM 12731 Separated the Pipeline class into it's
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Shirley.StolenFromHollyBots;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
-import org.firstinspires.ftc.teamcode.OpenCV.RingDetector;
 
 @TeleOp(name="Starter Stack Detection", group="1")
 public class StarterStackDetection_test extends LinearOpMode
