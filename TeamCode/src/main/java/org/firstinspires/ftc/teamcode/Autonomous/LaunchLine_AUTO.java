@@ -1,11 +1,13 @@
 /**
  * @Author: Georgia Petroff
- * @Project: Basic autonomous to move forward
+ * @Project: Basic autonomous to Move.java forward
  * @Start: 11/20/20
  * @Last: 12/07/20
  */
 
 package org.firstinspires.ftc.teamcode.Autonomous;
+
+import android.content.res.Resources;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -13,6 +15,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+
+import org.firstinspires.ftc.teamcode.Resources.Move;
 
 @Autonomous
 public class LaunchLine_AUTO extends LinearOpMode {
@@ -72,7 +76,7 @@ public class LaunchLine_AUTO extends LinearOpMode {
 
         bandHolder.setPosition(0.4);
 
-        move(6850, 0.6, 0);
+        Move.move(6850, 0.6, 0, driveRF, driveLF, driveRB, driveLB);
         resetEncoders();
 
         sSpeed = 0.25;
@@ -96,7 +100,7 @@ public class LaunchLine_AUTO extends LinearOpMode {
         Shooter.setPower(0);
 
         activateEncoders();
-        move(2000, 0.6, 4);
+        Move.move(2000, 0.6, 4,driveRF,driveLF,driveRB,driveLB);
         resetEncoders();
     }
 
@@ -121,167 +125,6 @@ public class LaunchLine_AUTO extends LinearOpMode {
      *
      * For explanation of code workings, look at the comments on the default case
      */
-    private void move(int ticks, double power, int direction)
-    {
-        switch (direction)
-        {
-            case 1:
-                driveRF.setTargetPosition(ticks);
-                driveLB.setTargetPosition(ticks);
-
-                while (driveRF.getCurrentPosition() <= ticks)
-                {
-                    driveRF.setPower(power);
-                    driveRB.setPower(0.0);
-                    driveLF.setPower(0.0);
-                    driveLB.setPower(power);
-                }
-
-                driveRF.setPower(0.0);
-                driveRB.setPower(0.0);
-                driveLF.setPower(0.0);
-                driveLB.setPower(0.0);
-                break;
-            case 2:
-                driveRF.setTargetPosition(ticks);
-                driveRB.setTargetPosition(-ticks);
-                driveLF.setTargetPosition(-ticks);
-                driveLB.setTargetPosition(ticks);
-
-                while (driveRF.getCurrentPosition() <= ticks)
-                {
-                    driveRF.setPower(power);
-                    driveRB.setPower(-power);
-                    driveLF.setPower(-power);
-                    driveLB.setPower(power);
-                }
-
-                driveRF.setPower(0.0);
-                driveRB.setPower(0.0);
-                driveLF.setPower(0.0);
-                driveLB.setPower(0.0);
-                break;
-            case 3:
-                ticks = -ticks;
-                driveLF.setTargetPosition(ticks);
-                driveRB.setTargetPosition(ticks);
-
-                while (driveLF.getCurrentPosition() >= ticks)
-                {
-                    driveRF.setPower(0.0);
-                    driveRB.setPower(power);
-                    driveLF.setPower(power);
-                    driveLB.setPower(0.0);
-                }
-
-                driveRF.setPower(0.0);
-                driveRB.setPower(0.0);
-                driveLF.setPower(0.0);
-                driveLB.setPower(0.0);
-                break;
-            case 4:
-                ticks = -ticks;
-                power = -power;
-
-                driveRF.setTargetPosition(ticks);
-                driveRB.setTargetPosition(ticks);
-                driveLF.setTargetPosition(ticks);
-                driveLB.setTargetPosition(ticks);
-
-                while (driveRF.getCurrentPosition() >= ticks)
-                {
-                    driveRF.setPower(power);
-                    driveRB.setPower(power);
-                    driveLF.setPower(power);
-                    driveLB.setPower(power);
-                }
-
-                driveRF.setPower(0.0);
-                driveRB.setPower(0.0);
-                driveLF.setPower(0.0);
-                driveLB.setPower(0.0);
-                break;
-            case 5:
-                ticks = -ticks;
-                power = -power;
-
-                driveRF.setTargetPosition(ticks);
-                driveLB.setTargetPosition(ticks);
-
-                while (driveRF.getCurrentPosition() >= ticks)
-                {
-                    driveRF.setPower(power);
-                    driveRB.setPower(0.0);
-                    driveLF.setPower(0.0);
-                    driveLB.setPower(power);
-                }
-
-                driveRF.setPower(0.0);
-                driveRB.setPower(0.0);
-                driveLF.setPower(0.0);
-                driveLB.setPower(0.0);
-                break;
-            case 6:
-                driveRF.setTargetPosition(-ticks);
-                driveRB.setTargetPosition(ticks);
-                driveLF.setTargetPosition(ticks);
-                driveLB.setTargetPosition(-ticks);
-
-                while (driveRF.getCurrentPosition() >= ticks)
-                {
-                    driveRF.setPower(-power);
-                    driveRB.setPower(power);
-                    driveLF.setPower(power);
-                    driveLB.setPower(-power);
-                }
-
-                driveRF.setPower(0.0);
-                driveRB.setPower(0.0);
-                driveLF.setPower(0.0);
-                driveLB.setPower(0.0);
-                break;
-            case 7:
-                driveLF.setTargetPosition(ticks);
-                driveRB.setTargetPosition(ticks);
-
-                while (driveLF.getCurrentPosition() <= ticks)
-                {
-                    driveRF.setPower(0.0);
-                    driveRB.setPower(power);
-                    driveLF.setPower(power);
-                    driveLB.setPower(0.0);
-                }
-
-                driveRF.setPower(0.0);
-                driveRB.setPower(0.0);
-                driveLF.setPower(0.0);
-                driveLB.setPower(0.0);
-                break;
-            default:
-                //set the position of each motor to the desired amount
-                //use math from paper in engineering notebook
-                driveRF.setTargetPosition(ticks);
-                driveRB.setTargetPosition(ticks);
-                driveLF.setTargetPosition(ticks);
-                driveLB.setTargetPosition(ticks);
-
-                //run the motors until the correct position is reached
-                while (driveRF.getCurrentPosition() <= ticks)
-                {
-                    driveRF.setPower(power);
-                    driveRB.setPower(power);
-                    driveLF.setPower(power);
-                    driveLB.setPower(power);
-                }
-
-                //turn off the motors
-                driveRF.setPower(0.0);
-                driveRB.setPower(0.0);
-                driveLF.setPower(0.0);
-                driveLB.setPower(0.0);
-                break;
-        }
-    }
 
     /**
      * @Pre: all four drive wheels have been declared and initialized
