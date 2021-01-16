@@ -27,7 +27,7 @@ public class LaunchLine_AUTO extends LinearOpMode {
     private DcMotor backTreads;
     private Servo bandHolder;
     private CRServo extendContinuous;
-    private Servo rotateArm;
+    private CRServo rotateArm;
     private Servo clampArm;
 
     private ElapsedTime runtime = new ElapsedTime();
@@ -61,7 +61,7 @@ public class LaunchLine_AUTO extends LinearOpMode {
         backTreads = hardwareMap.get(DcMotor.class, "backTreads");
         bandHolder = hardwareMap.get(Servo.class, "bandHolder");
         extendContinuous = hardwareMap.get(CRServo.class, "extendContinuous");
-        rotateArm = hardwareMap.get(Servo.class, "rotateArm");
+        rotateArm = hardwareMap.get(CRServo.class, "rotateArm");
         clampArm = hardwareMap.get(Servo.class, "clampArm");
 
         telemetry.addData("Status", "Initialized");
