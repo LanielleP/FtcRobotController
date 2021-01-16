@@ -1,6 +1,6 @@
 /**
  * @Author: Georgia Petroff
- * @Project: Basic autonomous to Move.java forward
+ * @Project: Basic autonomous to move forward
  * @Start: 11/20/20
  * @Last: 12/07/20
  */
