@@ -73,7 +73,8 @@ public class HighGoal_AUTO extends LinearOpMode {
         bandHolder.setPosition(0.4);
 
         //move forward to leave space for the conveyor belt to drop down
-        move(750, 1, 0);
+        //DECREASED POWER FROM 1 to 0.5, INCREASED TICKS FROM 750 TO 1500
+        move(1500, 0.5, 0);
         resetEncoders();
 
         //go back to loosen the conveyor belt
