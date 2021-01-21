@@ -88,10 +88,12 @@ public class HighGoal_AUTO extends LinearOpMode {
         resetEncoders();
 
         //get the launching motors to start spinning
-        sSpeed = 0.45;
+        //SET SPEED TO NEGATIVE 0.45 RATHER THAN POSITIVE 0.45
+        sSpeed = -0.45;
         Shooter.setPower(sSpeed);
         runtime.reset();
-        while (opModeIsActive() && runtime.seconds() < 1.0)
+        //INCREASED TIME FROM 1.0 to 5.0
+        while (opModeIsActive() && runtime.seconds() < 5.0)
         {
             telemetry.update();
         }
