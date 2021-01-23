@@ -84,7 +84,7 @@ public class HighGoal_AUTO extends LinearOpMode {
 
         //drive up to the launching position
         activateEncoders();
-        move(1400, 0.6, 0);
+        move(1300, 0.6, 0);
         resetEncoders();
 
         //get the launching motors to start spinning
@@ -107,10 +107,13 @@ public class HighGoal_AUTO extends LinearOpMode {
         {
             telemetry.update();
         }
+        mainTreads.setPower(0);
+        backTreads.setPower(0);
+        Shooter.setPower(0);
 
         //move to park
         activateEncoders();
-        move(150, 0.6, 0);
+        move(1900, 0.6, 0);
         resetEncoders();
     }
 
