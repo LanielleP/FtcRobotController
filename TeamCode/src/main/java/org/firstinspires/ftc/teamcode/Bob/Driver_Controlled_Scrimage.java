@@ -85,15 +85,15 @@ public class Driver_Controlled_Scrimage extends OpMode {
         p2y2 = gamepad2.right_stick_y;
 
         //-----------------Conveyor belt On/Off-----------------
-        if (gamepad2.right_bumper){
+        if (gamepad1.right_bumper){
             mainTreads.setPower(1);
             backTreads.setPower(-1);
-            if (gamepad2.x && !gamepad2.left_bumper){
+            if (gamepad1.x && !gamepad1.left_bumper){
                 mainTreads.setPower(-1);
                 backTreads.setPower(1);
             }
         }
-        if (!gamepad2.right_bumper){
+        if (!gamepad1.right_bumper){
             mainTreads.setPower(0);
             backTreads.setPower(0);
         }
