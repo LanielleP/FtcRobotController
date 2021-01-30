@@ -16,7 +16,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
 @SuppressWarnings({"unused"})
-public class Driver_Controlled_Scrimage extends OpMode {
+public class Driver_Controlled_1Driver extends OpMode {
 
     private DcMotor driveRF;//drive wheel located RIGHT FRONT
     private DcMotor driveRB;//drive wheel located RIGHT BACK
