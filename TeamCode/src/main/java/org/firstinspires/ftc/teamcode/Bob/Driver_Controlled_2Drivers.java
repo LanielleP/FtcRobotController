@@ -26,9 +26,9 @@ public class Driver_Controlled_2Drivers extends OpMode {
     private DcMotor mainTreads;
     private DcMotor backTreads;
     private Servo bandHolder;
-    private CRServo extendContinuous;
-    private CRServo rotateArm;
-    private Servo clampArm;
+    //private CRServo extendContinuous;
+    //private CRServo rotateArm;
+    //private Servo clampArm;
 
     @Override
     public void init()
@@ -42,9 +42,9 @@ public class Driver_Controlled_2Drivers extends OpMode {
         mainTreads = hardwareMap.get(DcMotor.class, "mainTreads");
         backTreads = hardwareMap.get(DcMotor.class, "backTreads");
         bandHolder = hardwareMap.get(Servo.class, "bandHolder");
-        extendContinuous = hardwareMap.get(CRServo.class, "extendContinuous");
-        rotateArm = hardwareMap.get(CRServo.class, "rotateArm");
-        clampArm = hardwareMap.get(Servo.class, "clampArm");
+        //extendContinuous = hardwareMap.get(CRServo.class, "extendContinuous");
+        //rotateArm = hardwareMap.get(CRServo.class, "rotateArm");
+        //clampArm = hardwareMap.get(Servo.class, "clampArm");
 
         //clockwise
         driveRF.setDirection(DcMotor.Direction.FORWARD);
@@ -130,14 +130,14 @@ public class Driver_Controlled_2Drivers extends OpMode {
 
         //Extend/Retract and rotating 
 
-        extendContinuous.setPower(-p2y1);
-        rotateArm.setPower(p2y2);
+        //extendContinuous.setPower(-p2y1);
+        //rotateArm.setPower(p2y2);
         //Clamp 
         if (gamepad2.x){
-            clampArm.setPosition(0.4);
+            //clampArm.setPosition(0.4);
         }
         if (gamepad2.y) {
-            clampArm.setPosition(0);
+            //clampArm.setPosition(0);
         }
 
 

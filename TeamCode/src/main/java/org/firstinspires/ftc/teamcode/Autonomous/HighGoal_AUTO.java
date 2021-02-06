@@ -26,9 +26,9 @@ public class HighGoal_AUTO extends LinearOpMode {
     private DcMotor mainTreads;
     private DcMotor backTreads;
     private Servo bandHolder;
-    private CRServo extendContinuous;
-    private CRServo rotateArm;
-    private Servo clampArm;
+    //private CRServo extendContinuous;
+    //private CRServo rotateArm;
+    //private Servo clampArm;
 
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -60,9 +60,9 @@ public class HighGoal_AUTO extends LinearOpMode {
         mainTreads = hardwareMap.get(DcMotor.class, "mainTreads");
         backTreads = hardwareMap.get(DcMotor.class, "backTreads");
         bandHolder = hardwareMap.get(Servo.class, "bandHolder");
-        extendContinuous = hardwareMap.get(CRServo.class, "extendContinuous");
-        rotateArm = hardwareMap.get(CRServo.class, "rotateArm");
-        clampArm = hardwareMap.get(Servo.class, "clampArm");
+        //extendContinuous = hardwareMap.get(CRServo.class, "extendContinuous");
+        //rotateArm = hardwareMap.get(CRServo.class, "rotateArm");
+        //clampArm = hardwareMap.get(Servo.class, "clampArm");
 
         telemetry.addData("Status", "Initialized");
 
