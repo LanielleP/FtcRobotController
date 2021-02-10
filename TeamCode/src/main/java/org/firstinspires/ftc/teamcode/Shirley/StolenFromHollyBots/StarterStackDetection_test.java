@@ -31,12 +31,12 @@ public class StarterStackDetection_test extends LinearOpMode
 {
     RingDetector ringDetector = null;
 
-    protected String CAMERA_SYSTEM                 = "webcam 1";  // can be PHONE or WEBCAM
+    //protected String CAMERA_SYSTEM                 = "WEBCAM";  // can be PHONE or WEBCAM
 
     @Override
     public void runOpMode()
     {
-        ringDetector =  RingDetector.init(hardwareMap, CAMERA_SYSTEM, true);
+        ringDetector =  RingDetector.init(hardwareMap, "WEBCAM", true);
         waitForStart();
 
         while (opModeIsActive())

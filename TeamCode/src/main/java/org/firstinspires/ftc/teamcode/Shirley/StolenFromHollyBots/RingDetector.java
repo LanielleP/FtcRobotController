@@ -62,7 +62,7 @@ public class RingDetector extends OpenCvPipeline
     static public RingDetector init(HardwareMap hardwareMap, String cameraSystem, boolean hasMonitor) {
 
         RingDetector pipeline = new RingDetector();
-        if (cameraSystem == "PHONE") {
+        /*if (cameraSystem == "PHONE") {
 
             int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
             phoneCam = OpenCvCameraFactory.getInstance().createInternalCamera(OpenCvInternalCamera.CameraDirection.FRONT, cameraMonitorViewId);
@@ -80,7 +80,7 @@ public class RingDetector extends OpenCvPipeline
                     phoneCam.startStreaming(320,240, OpenCvCameraRotation.SIDEWAYS_LEFT);
                 }
             });
-        } else if (cameraSystem == "WEBCAM") {
+        } else if (cameraSystem == "WEBCAM") {*/
             if (hasMonitor) {
                 int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
                 webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "webcam"), cameraMonitorViewId);
@@ -114,9 +114,9 @@ public class RingDetector extends OpenCvPipeline
                     webcam.startStreaming(320, 176, OpenCvCameraRotation.UPRIGHT);
                 }
             });
-        } else {
+        /*} else {
             return null;
-        }
+        }*/
         return pipeline;
     }
 
