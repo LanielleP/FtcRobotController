@@ -7,12 +7,13 @@
 
 package org.firstinspires.ftc.teamcode.Bob;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-//@Disabled
+@Disabled
 @TeleOp
 @SuppressWarnings({"unused"})
 public class DC_Automated_copy extends OpMode {
