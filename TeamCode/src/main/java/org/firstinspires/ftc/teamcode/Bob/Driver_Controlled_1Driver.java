@@ -102,7 +102,7 @@ public class Driver_Controlled_1Driver extends OpMode {
         //-----------------Shooter-----------------
         if (!gamepad1.left_bumper){
             sSpeed = 0;
-            Shooter.setPower(-sSpeed);
+            Shooter.setPower(sSpeed);
         }
         if (gamepad1.left_bumper){
             sSpeed = 0;
@@ -118,7 +118,7 @@ public class Driver_Controlled_1Driver extends OpMode {
             if (gamepad1.y){
                 sSpeed = 0.19;
             }
-            Shooter.setPower(-sSpeed);
+            Shooter.setPower(sSpeed);
         }
         //-----------------Band Holder-----------------
         if (gamepad2.a && !gamepad2.left_bumper && !gamepad2.right_bumper){
