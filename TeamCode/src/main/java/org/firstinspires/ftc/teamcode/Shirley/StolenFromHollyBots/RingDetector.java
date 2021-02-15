@@ -31,9 +31,9 @@ public class RingDetector extends OpenCvPipeline
     /*
      * The core values which define the location and size of the sample regions
      */
-    static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(220,98);
+    static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(100,60);
 
-    static final int REGION_WIDTH = 35;
+    static final int REGION_WIDTH = 100;
     static final int REGION_HEIGHT = 25;
 
     final int FOUR_RING_THRESHOLD = 150;
@@ -109,8 +109,6 @@ public class RingDetector extends OpenCvPipeline
                      * For a rear facing camera or a webcam, rotation is defined assuming the camera is facing
                      * away from the user.
                      */
-
-                    // @todo:  NEEDS TO BE TESTED
                     webcam.startStreaming(320, 176, OpenCvCameraRotation.UPRIGHT);
                 }
             });
