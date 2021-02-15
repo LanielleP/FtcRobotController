@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Shirley;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -11,13 +12,14 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvInternalCamera;
 import org.openftc.easyopencv.OpenCvWebcam;
 
+@Disabled
 @TeleOp(name = "Incognito Camera", group = "Iterative Opmode")
-public class RobotCameraLinearOp extends LinearOpMode {
+public class IncognitoCamera extends LinearOpMode {
 
     int width = 320; // height and width of the camera, make sure whatever size you choose is supported by the camera.
     int height = 240;
 
-    RingDetector pipeline = RingDetector.init(hardwareMap, "WEBCAM", true);
+    RingDetector pipeline = RingDetector.init(hardwareMap, "ẁebcam", true);
     //Note, your pipeline class MUST extend OpenCvPipeline. I can send part of my pipeline class if you're unsure of how to create one
 
     OpenCvWebcam phoneCam;
@@ -37,4 +39,4 @@ public class RobotCameraLinearOp extends LinearOpMode {
 
     }//ends runOpMode method
 
-}//ends RobotCameraLinearOp.java
+}//ends IncognitoCamera.java
