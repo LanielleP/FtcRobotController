@@ -85,15 +85,15 @@ public class Driver_Controlled_2Drivers_With_Arm extends OpMode {
         p2y2 = gamepad2.right_stick_y;
 
         //-----------------Conveyor belt On/Off-----------------
-        if (gamepad1.right_bumper){
+        if (gamepad2.right_bumper){
             mainTreads.setPower(1);
             backTreads.setPower(-1);
-            if (gamepad1.x && !gamepad1.left_bumper){
+            if (gamepad2.x && !gamepad2.left_bumper){
                 mainTreads.setPower(-1);
                 backTreads.setPower(1);
             }
         }
-        if (!gamepad1.right_bumper){
+        if (!gamepad2.right_bumper){
             mainTreads.setPower(0);
             backTreads.setPower(0);
         }
@@ -142,10 +142,10 @@ public class Driver_Controlled_2Drivers_With_Arm extends OpMode {
         rotateArm.setPosition(-p2y2);
         //}
         //Clamp
-        if (gamepad2.x){
+        if (gamepad2.a){
             clampArm.setPosition(0.4);
         }
-        if (gamepad2.y) {
+        if (gamepad2.b) {
             clampArm.setPosition(0);
         }
 
