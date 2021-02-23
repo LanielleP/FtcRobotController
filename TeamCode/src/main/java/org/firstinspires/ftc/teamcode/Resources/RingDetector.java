@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Shirley.StolenFromHollyBots;
+package org.firstinspires.ftc.teamcode.Resources;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -39,6 +39,14 @@ public class RingDetector extends OpenCvPipeline
     final int FOUR_RING_THRESHOLD = 140;//prev: 150
     final int ONE_RING_THRESHOLD = 130;//prev: 135
 
+    public enum RingPosition
+    {
+        UNKNOWN,
+        FOUR,
+        ONE,
+        NONE
+    }
+
     Point region1_pointA = new Point(
             REGION1_TOPLEFT_ANCHOR_POINT.x,
             REGION1_TOPLEFT_ANCHOR_POINT.y);
@@ -62,31 +70,9 @@ public class RingDetector extends OpenCvPipeline
     static public RingDetector init(HardwareMap hardwareMap, String cameraSystem, boolean hasMonitor) {
 
         RingDetector pipeline = new RingDetector();
-        /*if (cameraSystem == "PHONE") {
+        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+            webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "webcam"), cameraMonitorViewId);
 
-            int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-            phoneCam = OpenCvCameraFactory.getInstance().createInternalCamera(OpenCvInternalCamera.CameraDirection.FRONT, cameraMonitorViewId);
-            phoneCam.setPipeline(pipeline);
-            // VERY IMPORTANT: We set the viewport policy to optimized view so the preview doesn't appear 90 deg
-            // out when the RC activity is in portrait. We do our actual image processing assuming
-            // landscape orientation, though.
-            phoneCam.setViewportRenderingPolicy(OpenCvCamera.ViewportRenderingPolicy.OPTIMIZE_VIEW);
-
-            phoneCam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
-            {
-                @Override
-                public void onOpened()
-                {
-                    phoneCam.startStreaming(320,240, OpenCvCameraRotation.SIDEWAYS_LEFT);
-                }
-            });
-        } else if (cameraSystem == "webcam") {
-            if (hasMonitor) {*/
-                int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-                webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "webcam"), cameraMonitorViewId);
-            /*} else {
-                webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "webcam"));
-            }*/
             webcam.setPipeline(pipeline);
             webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
             {

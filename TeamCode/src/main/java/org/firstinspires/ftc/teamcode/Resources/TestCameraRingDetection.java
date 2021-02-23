@@ -21,17 +21,15 @@
  * FTC TEAM 12731 Separated the Pipeline class into it's
  */
 
-package org.firstinspires.ftc.teamcode.Shirley.StolenFromHollyBots;
+package org.firstinspires.ftc.teamcode.Resources;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp(name="Starter Stack Detection", group="1")
-public class StarterStackDetection_test extends LinearOpMode
+public class TestCameraRingDetection extends LinearOpMode
 {
     RingDetector ringDetector = null;
-
-    //protected String CAMERA_SYSTEM                 = "WEBCAM";  // can be PHONE or WEBCAM
 
     @Override
     public void runOpMode()

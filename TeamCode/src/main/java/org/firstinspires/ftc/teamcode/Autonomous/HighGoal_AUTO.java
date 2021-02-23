@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous
+@Autonomous(name="High Goal")
 public class HighGoal_AUTO extends LinearOpMode {
     //prepares needed hardware
     private DcMotor driveRF;//drive wheel located RIGHT FRONT
