@@ -31,13 +31,13 @@ public class RingDetector extends OpenCvPipeline
     /*
      * The core values which define the location and size of the sample regions
      */
-    static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(100,60);
+    static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(115,90);
 
-    static final int REGION_WIDTH = 100;
-    static final int REGION_HEIGHT = 25;
+    static final int REGION_WIDTH = 60;
+    static final int REGION_HEIGHT = 40;
 
-    final int FOUR_RING_THRESHOLD = 150;
-    final int ONE_RING_THRESHOLD = 135;
+    final int FOUR_RING_THRESHOLD = 140;//prev: 150
+    final int ONE_RING_THRESHOLD = 130;//prev: 135
 
     Point region1_pointA = new Point(
             REGION1_TOPLEFT_ANCHOR_POINT.x,
@@ -164,7 +164,7 @@ public class RingDetector extends OpenCvPipeline
                 region1_pointA, // First point which defines the rectangle
                 region1_pointB, // Second point which defines the rectangle
                 GREEN, // The color the rectangle is drawn in
-                -1); // Negative thickness means solid fill
+                1); // Negative thickness means solid fill, CHANGED TO POSITIVE 1 TO MAKE INTERIOR VISIBLE
 
         return input;
     }
