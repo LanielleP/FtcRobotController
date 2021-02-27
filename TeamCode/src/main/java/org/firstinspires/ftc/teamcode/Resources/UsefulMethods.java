@@ -14,6 +14,18 @@ public class UsefulMethods {
 
 
 
+    public UsefulMethods(DcMotor driveRF, DcMotor driveLF, DcMotor driveRB, DcMotor driveLB,
+                         DcMotor Shooter, DcMotor mainTreads, DcMotor backTreads) {
+        this.driveRF = driveRF;
+        this.driveLF = driveLF;
+        this.driveRB = driveRB;
+        this.driveLB = driveLB;
+        this.Shooter = Shooter;
+        this.mainTreads = mainTreads;
+        this.backTreads = backTreads;
+        constructorMode = "combo";
+    }//ends UsefulMethods constructor, use this constructor to move
+
     public UsefulMethods(DcMotor driveRF, DcMotor driveLF, DcMotor driveRB, DcMotor driveLB) {
         this.driveRF = driveRF;
         this.driveLF = driveLF;
@@ -32,7 +44,7 @@ public class UsefulMethods {
 
 
     public void move(int ticks, double power, int direction) {
-        if(constructorMode.equals("move")) {
+        if(constructorMode.equals("move")||constructorMode.equals("combo")) {
             activateEncoders();
             switch (direction) {
                 case 1:
@@ -166,7 +178,7 @@ public class UsefulMethods {
     }//ends (the better) move method
 
     public void resetEncoders() {
-        if(constructorMode.equals("move")) {
+        if(constructorMode.equals("move")||constructorMode.equals("combo")) {
             driveRF.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             driveRB.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             driveLF.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -174,8 +186,8 @@ public class UsefulMethods {
         }//ends if
     }//ends resetEncoders
 
-    private void activateEncoders() {
-        if(constructorMode.equals("move")) {
+    public void activateEncoders() {
+        if(constructorMode.equals("move")||constructorMode.equals("combo")) {
             driveRF.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             driveRB.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             driveLF.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -184,18 +196,18 @@ public class UsefulMethods {
     }//ends activateEncoders
 
     public void shoot(double sSpeed) {
-        Shooter.setPower(sSpeed);
-        wait(5.0);
-        mainTreads.setPower(1);
-        backTreads.setPower(-1);
-        Shooter.setPower(sSpeed);
-        wait(2.0);
-        mainTreads.setPower(0);
-        mainTreads.setPower(0);
-        Shooter.setPower(0);
+        if(constructorMode.equals("shoot")||constructorMode.equals("combo")) {
+            Shooter.setPower(sSpeed);
+            wait(5.0);
+            mainTreads.setPower(1);
+            backTreads.setPower(-1);
+            Shooter.setPower(sSpeed);
+            wait(2.0);
+            mainTreads.setPower(0);
+            mainTreads.setPower(0);
+            Shooter.setPower(0);
+        }
     }//ends shoot method
-
-
 
     public void move(int ticks, double power, int direction,
         DcMotor driveRF, DcMotor driveLF, DcMotor driveRB, DcMotor driveLB) {

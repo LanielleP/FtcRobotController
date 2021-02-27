@@ -13,14 +13,15 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.Resources.RingDetector;
 import org.firstinspires.ftc.teamcode.Resources.UsefulMethods;
 
-@Autonomous(name="Wobble Goal")
-public class WobbleGoal_AUTO extends LinearOpMode {
+@TeleOp(name="Wobble Goal Controlled")
+public class WobbleGoal_Controlled extends LinearOpMode {
 
     @Override
     public void runOpMode() {
@@ -63,6 +64,7 @@ public class WobbleGoal_AUTO extends LinearOpMode {
         //get the ring position
         RingDetector.RingPosition ringNum =  ringDetector.getPosition();
 
+
         //extend arm out
         extendContinuous.setPower(-1);
         UsefulMethods.wait(5.0);
@@ -80,7 +82,7 @@ public class WobbleGoal_AUTO extends LinearOpMode {
 
         /*position C*/ if(ringNum == RingDetector.RingPosition.FOUR) {
             telemetry.addData("Rings: ", ringNum);
-
+            telemetry.update();
             //move forward to be closer
             methods.move(1500, 0.25, 0);
 
@@ -103,7 +105,7 @@ public class WobbleGoal_AUTO extends LinearOpMode {
             extendContinuous.setPower(0);
         } /*position B*/ else if (ringNum == RingDetector.RingPosition.ONE) {
             telemetry.addData("Rings: ", ringNum);
-
+            telemetry.update();
             //move to box B and drop wobble goal
             methods.move(1600, 0.25, 0);
             clampArm.setPosition(0);
@@ -116,7 +118,7 @@ public class WobbleGoal_AUTO extends LinearOpMode {
             extendContinuous.setPower(0);
         } /*position A*/ else {
             telemetry.addData("Rings: ", ringNum);
-
+            telemetry.update();
             //move to box A and drop wobble goal
             methods.move(2000, 0.25, 0);//was 200 ticks
             clampArm.setPosition(0);

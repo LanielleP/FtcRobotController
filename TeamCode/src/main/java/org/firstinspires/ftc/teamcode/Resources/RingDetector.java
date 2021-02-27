@@ -31,7 +31,7 @@ public class RingDetector extends OpenCvPipeline
     /*
      * The core values which define the location and size of the sample regions
      */
-    static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(115,90);
+    static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(85,85);
 
     static final int REGION_WIDTH = 60;
     static final int REGION_HEIGHT = 40;

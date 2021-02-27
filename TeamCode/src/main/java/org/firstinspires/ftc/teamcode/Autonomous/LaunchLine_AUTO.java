@@ -17,7 +17,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.Resources.Move;
+import org.firstinspires.ftc.teamcode.Resources.UsefulMethods;
 
 @Disabled
 @Autonomous
@@ -37,6 +37,7 @@ public class LaunchLine_AUTO extends LinearOpMode {
     private Servo clampArm;
 
     private ElapsedTime runtime = new ElapsedTime();
+    private UsefulMethods methods = new UsefulMethods(driveRF, driveLF, driveRB, driveLB, Shooter, mainTreads, backTreads);
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -78,8 +79,7 @@ public class LaunchLine_AUTO extends LinearOpMode {
 
         bandHolder.setPosition(0.4);
 
-        Move.move(6850, 0.6, 0, driveRF, driveLF, driveRB, driveLB);
-        resetEncoders();
+        methods.move(6850, 0.6, 0, driveRF, driveLF, driveRB, driveLB);
 
         sSpeed = 0.25;
         Shooter.setPower(sSpeed);
@@ -101,9 +101,7 @@ public class LaunchLine_AUTO extends LinearOpMode {
         backTreads.setPower(0);
         Shooter.setPower(0);
 
-        activateEncoders();
-        Move.move(2000, 0.6, 4,driveRF,driveLF,driveRB,driveLB);
-        resetEncoders();
+        methods.move(2000, 0.6, 4,driveRF,driveLF,driveRB,driveLB);
     }
 
     /**
