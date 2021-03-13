@@ -31,10 +31,10 @@ public class RingDetector extends OpenCvPipeline
     /*
      * The core values which define the location and size of the sample regions
      */
-    static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(85,85);
+    static final Point REGION1_TOPLEFT_ANCHOR_POINT = new Point(75,75);//prev 85, 85
 
-    static final int REGION_WIDTH = 60;
-    static final int REGION_HEIGHT = 40;
+    static final int REGION_WIDTH = 80;//prev 60
+    static final int REGION_HEIGHT = 60;//prev 40
 
     final int FOUR_RING_THRESHOLD = 140;//prev: 150
     final int ONE_RING_THRESHOLD = 130;//prev: 135
@@ -63,7 +63,7 @@ public class RingDetector extends OpenCvPipeline
     int avg1;
 
     // Volatile since accessed by OpMode thread w/o synchronization
-    private RingPosition position = RingPosition.FOUR;
+    private RingPosition position = null;
 
     private RingDetector() {}
 
@@ -136,7 +136,7 @@ public class RingDetector extends OpenCvPipeline
                 BLUE, // The color the rectangle is drawn in
                 2); // Thickness of the rectangle lines
 
-        position = RingPosition.FOUR; // Record our analysis
+        //position = RingPosition.FOUR; // Record our analysis
         if(avg1 > FOUR_RING_THRESHOLD){
             position = RingPosition.FOUR;
         }else if (avg1 > ONE_RING_THRESHOLD){

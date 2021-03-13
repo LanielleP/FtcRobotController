@@ -62,15 +62,15 @@ public class UsefulMethods {
                     driveLB.setPower(0.0);
                     break;
                 case 2:
-                    driveRF.setTargetPosition(ticks);
-                    driveRB.setTargetPosition(-ticks);
-                    driveLF.setTargetPosition(-ticks);
-                    driveLB.setTargetPosition(ticks);
-                    while (driveRF.getCurrentPosition() <= ticks) {
-                        driveRF.setPower(power);
-                        driveRB.setPower(-power);
-                        driveLF.setPower(-power);
-                        driveLB.setPower(power);
+                    driveRF.setTargetPosition(-ticks);
+                    driveRB.setTargetPosition(ticks);
+                    driveLF.setTargetPosition(ticks);
+                    driveLB.setTargetPosition(-ticks);
+                    while (driveRF.getCurrentPosition() >= ticks) {
+                        driveRF.setPower(-power);
+                        driveRB.setPower(power);
+                        driveLF.setPower(power);
+                        driveLB.setPower(-power);
                     }
                     driveRF.setPower(0.0);
                     driveRB.setPower(0.0);

@@ -56,6 +56,7 @@ public class WobbleGoal_Controlled extends LinearOpMode {
         RingDetector.RingPosition ringNum =  ringDetector.getPosition();
 
         telemetry.addData("Status", "Initialized");
+        telemetry.update();
 
         waitForStart();
 
@@ -65,9 +66,9 @@ public class WobbleGoal_Controlled extends LinearOpMode {
         //TODO make program work
         //get the ring position
         UsefulMethods.wait(0.5);
+        telemetry.addData("Rings Calculation Thing: ", ringDetector.getAnalysis());
         ringNum =  ringDetector.getPosition();
         telemetry.addData("Rings: ", ringNum);
-        telemetry.addData("Rings Calculation Thing: ", ringDetector.getAnalysis());
         telemetry.update();
 
 
@@ -127,15 +128,15 @@ public class WobbleGoal_Controlled extends LinearOpMode {
             telemetry.addData("Rings: ", ringNum);
             telemetry.update();
             //move to box A and drop wobble goal
-            methods.move(2000, 0.25, 0);//was 200 ticks
+            methods.move(2250, 0.5, 0);//was 2000 ticks
             clampArm.setPosition(0);
             rotateArm.setPosition(0);
 
             //move over to release wobble goal
-            methods.move(500, 0.25, 2);
+            methods.move(2100, 0.5, 2);
 
             //park and retract arm
-            methods.move(1500, 0.25, 4);//was 400 ticks
+            methods.move(2000, 0.5, 4);//was 400 ticks
             extendContinuous.setPower(1);
             UsefulMethods.wait(5.0);
             extendContinuous.setPower(0);
