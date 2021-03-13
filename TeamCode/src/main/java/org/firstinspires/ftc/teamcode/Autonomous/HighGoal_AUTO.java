@@ -14,6 +14,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.Resources.UsefulMethods;
+
 @Autonomous(name="High Goal")
 public class HighGoal_AUTO extends LinearOpMode {
     //prepares needed hardware
@@ -26,9 +28,9 @@ public class HighGoal_AUTO extends LinearOpMode {
     private DcMotor mainTreads;
     private DcMotor backTreads;
     private Servo bandHolder;
-    //private CRServo extendContinuous;
-    //private CRServo rotateArm;
-    //private Servo clampArm;
+    private CRServo extendContinuous;
+    private Servo rotateArm;
+    private Servo clampArm;
 
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -59,9 +61,9 @@ public class HighGoal_AUTO extends LinearOpMode {
         mainTreads = hardwareMap.get(DcMotor.class, "mainTreads");
         backTreads = hardwareMap.get(DcMotor.class, "backTreads");
         bandHolder = hardwareMap.get(Servo.class, "bandHolder");
-        //extendContinuous = hardwareMap.get(CRServo.class, "extendContinuous");
-        //rotateArm = hardwareMap.get(CRServo.class, "rotateArm");
-        //clampArm = hardwareMap.get(Servo.class, "clampArm");
+        extendContinuous = hardwareMap.get(CRServo.class, "extendContinuous");
+        rotateArm = hardwareMap.get(Servo.class, "rotateArm");
+        clampArm = hardwareMap.get(Servo.class, "clampArm");
 
         telemetry.addData("Status", "Initialized");
 
@@ -70,6 +72,15 @@ public class HighGoal_AUTO extends LinearOpMode {
         double sSpeed;
 
         bandHolder.setPosition(0.4);
+
+        //extend arm out
+        extendContinuous.setPower(-1);
+        UsefulMethods.wait(5.0);
+        extendContinuous.setPower(0);
+
+        //grab arm and tilt
+        clampArm.setPosition(0.4);
+        rotateArm.setPosition(0.3);
 
         //move forward to leave space for the conveyor belt to drop down
         //DECREASED POWER FROM 1 to 0.5, INCREASED TICKS FROM 750 TO 1500
@@ -114,6 +125,13 @@ public class HighGoal_AUTO extends LinearOpMode {
         activateEncoders();
         move(1900, 0.6, 0);
         resetEncoders();
+
+        //retract wobble goal arm
+        clampArm.setPosition(0);
+        rotateArm.setPosition(0);
+        extendContinuous.setPower(1);
+        UsefulMethods.wait(5.0);
+        extendContinuous.setPower(0);
     }
 
     /**

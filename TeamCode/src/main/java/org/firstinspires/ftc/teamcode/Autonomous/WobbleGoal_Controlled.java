@@ -53,6 +53,8 @@ public class WobbleGoal_Controlled extends LinearOpMode {
         UsefulMethods methods = new UsefulMethods(driveRF,driveLF,driveRB,driveLB);
         methods.resetEncoders();//stuff
 
+        RingDetector.RingPosition ringNum =  ringDetector.getPosition();
+
         telemetry.addData("Status", "Initialized");
 
         waitForStart();
@@ -62,7 +64,12 @@ public class WobbleGoal_Controlled extends LinearOpMode {
 
         //TODO make program work
         //get the ring position
-        RingDetector.RingPosition ringNum =  ringDetector.getPosition();
+        UsefulMethods.wait(0.5);
+        ringNum =  ringDetector.getPosition();
+        telemetry.addData("Rings: ", ringNum);
+        telemetry.addData("Rings Calculation Thing: ", ringDetector.getAnalysis());
+        telemetry.update();
+
 
 
         //extend arm out
@@ -76,8 +83,8 @@ public class WobbleGoal_Controlled extends LinearOpMode {
 
         //PROGRAM TO LAUNCH INTO HIGH GOAL, POWER SHOT, OR WHATEVER IT ENDS UP HITTING
         methods.move(1500, 0.25, 0);
-        methods.move(500, 1, 4);//back (to shake back belt loose)
-        methods.move(1300, 0.26, 0);//forward (to shoot)
+        methods.move(500, 0.75, 4);//back (to shake back belt loose)
+        methods.move(1300, 0.25, 0);//forward (to shoot)
         UsefulMethods.shoot(sSpeed,Shooter,mainTreads,backTreads);
 
         /*position C*/ if(ringNum == RingDetector.RingPosition.FOUR) {
