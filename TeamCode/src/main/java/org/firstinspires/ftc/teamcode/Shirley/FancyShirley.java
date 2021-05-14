@@ -83,7 +83,7 @@ public class FancyShirley extends OpMode
         if(xPow>=0 && yPow<0)ang+=90;//move angle to second quadrant
         else if(xPow<0 && yPow<0)ang+=180;//move angle to third quadrant
         else if(xPow<0 && yPow<=0 )ang+=270;//move angle to fourth quadrant
-        ang = ang - orientation;//likely to be an issue
+        ang -= orientation;//likely to be an issue?
 
         if(ang<-180)ang+=360;//angle must be>=-180
         if(ang>180)ang-=360;//angle must be<=180
