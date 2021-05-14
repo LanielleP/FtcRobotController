@@ -209,9 +209,11 @@ public class UsefulMethods {
         }
     }//ends shoot method
 
+
+
+    //TODO make static after creating static reset/activate
     public void move(int ticks, double power, int direction,
         DcMotor driveRF, DcMotor driveLF, DcMotor driveRB, DcMotor driveLB) {
-        if(constructorMode.equals("move")) {
             activateEncoders();
             switch (direction) {
                 case 1:
@@ -341,9 +343,7 @@ public class UsefulMethods {
                     break;
             }//ends switch statement
             resetEncoders();
-        }//ends if
     }//ends  move method
-
 
     public static void shoot(double sSpeed, DcMotor Shooter, DcMotor mainTreads, DcMotor backTreads) {
         Shooter.setPower(sSpeed);
