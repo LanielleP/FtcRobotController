@@ -72,7 +72,7 @@ public class FancyShirley extends OpMode
         yPow = -gamepad1.left_stick_y;
         rxPow = gamepad1.right_stick_x;
 
-        double orientation = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.XYZ, AngleUnit.DEGREES).thirdAngle;;
+        double orientation = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.XYZ, AngleUnit.DEGREES).thirdAngle;
         double magnitude = Math.sqrt( Math.pow(xPow,2) + Math.pow(yPow,2) );
         double ang = Math.toDegrees(Math.atan( xPow/yPow ));
 
