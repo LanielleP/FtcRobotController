@@ -114,6 +114,7 @@ public class FancyShirley extends OpMode
     }//ends IMU_Calibrated
 
     private void IMUInit() {//DEFINITELY not borrowed from github
+        //change to logical stuff https://first-tech-challenge.github.io/SkyStone/com/qualcomm/hardware/bosch/BNO055IMUImpl.html
         BNO055IMU.Parameters IMU_Parameters;
         IMU_Parameters = new BNO055IMU.Parameters();
         IMU_Parameters.mode = BNO055IMU.SensorMode.IMU;//Set IMU sensor mode to IMU (uses gyroscope to calculate the orientation of hub)
